@@ -5,10 +5,11 @@ export function xorEncryptDecrypt(text: string, key: string): string {
   const keyLength = key.length;
   for (let i = 0; i < text.length; i++) {
 
+    // 日本語の文字コードに対応するため、UTF-16を使用
     // 暗号化する平文の文字コードを1文字分取得
     const textCharCode = text.charCodeAt(i);
 
-    // 鍵文字の文字長に応じて、鍵文字の文字コードを取得
+    // 鍵文字の長さに応じて、鍵文字の文字コードを取得
     // 鍵文字が短い場合は、繰り返し使用する
     // 例: 鍵文字が "abc" の場合、i=0なら 'a', i=1なら 'b', i=2なら 'c', i=3なら 'a' となる
     const keyCharCode = key.charCodeAt(i % keyLength);
